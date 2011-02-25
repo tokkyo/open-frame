@@ -1,27 +1,40 @@
 <script>
+//branch of https://github.com/aboodman/open-frame
 chrome.contextMenus.create({
-  "title": "Open frame in this tab",
+  //Open frame in background tab
+  "title": "バックグラウンドのタブで開く (&B)",
+  "onclick": function(clickData) {
+    chrome.tabs.create({url: getURL(clickData),selected:false});
+  }
+});
+
+chrome.contextMenus.create({
+  //Open frame in this tab"
+  "title": "このタブで開く (&S)",
   "onclick": function(clickData, tab) {
     chrome.tabs.update(tab.id, {url: getURL(clickData)});
   }
 });
 
 chrome.contextMenus.create({
-  "title": "Open frame in new tab",
+  //Open frame in new tab
+  "title": "新しいタブで開く (&T)",
   "onclick": function(clickData) {
     chrome.tabs.create({url: getURL(clickData)});
   }
 });
 
 chrome.contextMenus.create({
-  "title": "Open frame in new window",
+  //Open frame in new window
+  "title": "新しいウィンドウで開く (&W)",
   "onclick": function(clickData) {
     chrome.windows.create({url: getURL(clickData)});
   }
 });
 
 chrome.contextMenus.create({
-  "title": "Open frame in incognito window",
+  //Open frame in incognito window
+  "title": "シークレットウィンドウで開く (&G)",
   "onclick": function(clickData) {
     chrome.windows.create({url: getURL(clickData), incognito: true});
   }
