@@ -3,6 +3,7 @@
 chrome.contextMenus.create({
   //Open frame in background tab
   "title": "バックグラウンドのタブで開く (&B)",
+  "contexts": ["frame"],
   "onclick": function(clickData) {
     chrome.tabs.create({url: getURL(clickData),selected:false});
   }
@@ -11,6 +12,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   //Open frame in this tab"
   "title": "このタブで開く (&S)",
+  "contexts": ["frame"],
   "onclick": function(clickData, tab) {
     chrome.tabs.update(tab.id, {url: getURL(clickData)});
   }
@@ -19,6 +21,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   //Open frame in new tab
   "title": "新しいタブで開く (&T)",
+  "contexts": ["frame"],
   "onclick": function(clickData) {
     chrome.tabs.create({url: getURL(clickData)});
   }
@@ -27,6 +30,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   //Open frame in new window
   "title": "新しいウィンドウで開く (&W)",
+  "contexts": ["frame"],
   "onclick": function(clickData) {
     chrome.windows.create({url: getURL(clickData)});
   }
@@ -35,6 +39,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   //Open frame in incognito window
   "title": "シークレットウィンドウで開く (&G)",
+  "contexts": ["frame"],
   "onclick": function(clickData) {
     chrome.windows.create({url: getURL(clickData), incognito: true});
   }
